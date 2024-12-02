@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function processSubarrays(subarrays) {
+  // Step 1: Flatten the subarrays into a single array
+  let combinedArray = [];
+  for (let i = 0; i < subarrays.length; i++) {
+    for (let j = 0; j < subarrays[i].length; j++) {
+      combinedArray.push(subarrays[i][j]);
+    }
+  }
+
+  // Step 2: Remove duplicate values
+  let uniqueArray = [];
+  for (let i = 0; i < combinedArray.length; i++) {
+    if (!uniqueArray.includes(combinedArray[i])) {
+      uniqueArray.push(combinedArray[i]);
+    }
+  }
+
+  // Step 3: Calculate the sum of the unique values
+  let sum = 0;
+  for (let i = 0; i < uniqueArray.length; i++) {
+    sum += uniqueArray[i];
+  }
+
+  return {
+    uniqueArray,
+    sum,
+  };
+}
+
+// Example usage:
+const subarrays = [
+  [1, 2, 3],
+  [2, 3, 4],
+  [4, 5, 6],
+];
+
+const result = processSubarrays(subarrays);
+console.log("Unique Array:", result.uniqueArray); // Output: [1, 2, 3, 4, 5, 6]
+console.log("Sum of Unique Array:", result.sum);  // Output: 21
+
+    </script>
+</body>
+</html>
